@@ -488,7 +488,7 @@ public class PrimeGenerator implements Iterator<Integer> {
 			48437, 48449, 48463, 48473, 48479, 48481, 48487, 48491, 48497, 48523, 
 			48527, 48533, 48539, 48541, 48563, 48571, 48589, 48593, 48611};
 	private int[] primes;
-	private int index = 0;
+	private int index;
 	private int numberOfPrimes = 5000; //number of found primes
 	public static void main (String [ ] args) {
 		// Make sure there is exactly one argument, an integer.
@@ -511,9 +511,11 @@ public class PrimeGenerator implements Iterator<Integer> {
 	public PrimeGenerator (int n) throws IllegalArgumentException{
 		// Make sure n is positive; throw IllegalArgumentException if not.
 		// Initialize the iterator of the first n prime numbers.
+		
 		if (n<=0) {
 			throw new IllegalArgumentException("n is not positive");
 		}
+		index = 0;
 		primes = Arrays.copyOf(initPrimes, n); //copy over first 1000 primes - will truncate if n<1000
 		if (n>5000) {
 			int nextPossiblePrime = 48613; //next possible prime value
